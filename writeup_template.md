@@ -17,7 +17,6 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/Img2.png "Undistorted"
 [image3]: ./output_images/Img3.png "Undistorted"
 [image4]: ./output_images/Img4.png "Undistorted"
-[video1]: ./output_images/uno.mp4 "Undistorted"
 [image5]: ./output_images/Img5.png "Undistorted"
 [image6]: ./output_images/Img6.png "Undistorted"
 
@@ -74,9 +73,9 @@ As I said before, the most important decision as to the classifier has been whic
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a link to my video result:
 
-![alt text][video1]
+
+Here's a [link to my video result](./output_images/uno.mp4)
 
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
