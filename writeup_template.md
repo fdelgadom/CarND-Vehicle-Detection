@@ -12,14 +12,13 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
-[video1]: ./project_video.mp4
+[image1]: ./output_images/img1.png
+[image2]: ./output_images/img2.png
+[image3]: ./output_images/img3.png
+[image4]: ./output_images/img4.png
+[video1]: ./output_images/uno.mp4
+[image5]: ./output_images/img5.png
+[image6]: ./output_images/img6.png
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
 ###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -41,48 +40,61 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters but the key parameters in this project turned to be only the color space (both YCrCb and YUV are the best ones) and window size (128x128). I was unable to improve the results appreciably, varying the other parameters, so I left most of them fixed and worked with the two mentioned.
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM using Spatial, Color Histogram and Hog features. The results are saved in a file to be used later by the pipeline.
 
 ###Sliding Window Search
 
 ####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+The sliding window search is based in the Hog Sub-sampling Window Search algorithm and is the function `find_cars()`in the code. 
 
-![alt text][image3]
+I decided to try several scales and eliminate those that were responsible of false positives, the scales finally used are 1, 1.3, 1.5, 1.7
+
+After several experiments using different values of overlap windows, I set the parameter to the recommended minimun 0.65.
+
+![alt text][image2]
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a decent result.  Here is an example:
 
-![alt text][image4]
+![alt text][image3]
+
+![alt text][image5]
+
+![alt text][image6]
+
+
+As I said before, the most important decision as to the classifier has been which of the images in the dataset to use.
 ---
 
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result]![alt text][video1]
 
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.
+
+To eliminate false positives, the class `Heatmap_nFrames` using `collections.deque(maxlen=15)` compute the heatmap, using the last 15 frames. Another improvement not tested is to give greater weight to new frames compared to older ones, but it was not necessary.
+
+As a consequence of using the last 15 frames, the threshold should also be fixed at a relatively high value: 40
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
+### Here are a frame and their corresponding heatmap and the output of `scipy.ndimage.measurements.label()`  :
 
-![alt text][image5]
+![alt text][image3]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
 
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
+### Here the resulting bounding boxes are drawn onto the same frame in the serie:
+![alt text][image4]
 
 
 
