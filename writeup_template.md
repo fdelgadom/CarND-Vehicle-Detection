@@ -13,12 +13,12 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./output_images/Img1.png "Undistorted"
-[image2]: /output_images/Img2.png
-[image3]: /output_images/Img3.png
-[image4]: /output_images/Img4.png
-[video1]: /output_images/uno.mp4
-[image5]: /output_images/Img5.png
-[image6]: /output_images/Img6.png
+[image2]: ./output_images/Img2.png "Undistorted"
+[image3]: ./output_images/Img3.png "Undistorted"
+[image4]: ./output_images/Img4.png "Undistorted"
+[video1]: ./output_images/uno.mp4 "Undistorted"
+[image5]: ./output_images/Img5.png "Undistorted"
+[image6]: ./output_images/Img6.png "Undistorted"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
 ###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
