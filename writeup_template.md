@@ -62,7 +62,6 @@ After several experiments using different values of overlap windows, I set the p
 
 Ultimately I searched on four scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a decent result.  Here are some example images:
 
-![alt text][image3]
 
 ![alt text][image5]
 
@@ -75,7 +74,9 @@ As I said before, the most important decision as to the classifier has been whic
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result]![alt text][video1]
+Here's a link to my video result:
+
+![alt text][video1]
 
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
