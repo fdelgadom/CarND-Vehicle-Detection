@@ -86,14 +86,14 @@ To eliminate false positives, the class `Heatmap_nFrames` using `collections.deq
 
 As a consequence of using the last 15 frames, the threshold should also be fixed at a relatively high value: 40
 
-Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
+Here's an example result showing the heatmap:
 
-### Here are a frame and their corresponding heatmap and the output of `scipy.ndimage.measurements.label()`  :
 
 ![alt text][image3]
 
 
-### Here the resulting bounding boxes are drawn onto the same frame in the serie:
+Here the resulting bounding boxes are drawn onto the same frame:
+
 ![alt text][image4]
 
 
