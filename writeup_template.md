@@ -104,5 +104,9 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Following the instructions, code and recommendations of the lesson, the truth is that I got to a pipeline that worked, but the process of improvement and testing of parameters has been very laborious and complicated.
+
+I think the dataset I used was not of high quality and perhaps should have spent much more effort in using the new dataset of images or performing data_augmentation.
+
+Although the final video, I think it has enough quality to meet the requirements of the project, is not robust enough for other environmental circumstances.
 
